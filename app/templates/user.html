@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "flash.html"%}
+<div class="well well-large" style="height:140px;">
+    <div class="pull-right">
+        <!--<img src="{{user.avatar(128)}}" class="img-polaroid">-->
+        <img src="/static/img/superman.jpg" width="150" height="150" class="img-polaroid" style="margin:2px">
+    </div>
+    <h1>{{user.nickname}}</h1>
+    {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
+    {% if user.last_seen %}<p><i>Last seen on: {{user.last_seen}}</i></p>{% endif %}
+    <p>Followers:{{user.followers.count()-1}} | Following:{{user.followed.count()-1}} |
+        {% if user.id == g.user.id %}
+            <a href="{{url_for('edit')}}">Edit your profile</a>
+            {% elif not g.user.is_following(user) %}
+            <a href="{{url_for('follow',nickname=user.nickname)}}">Follow</a>
+            {% else %}
+            <a href="{{url_for('unfollow',nickname=user.nickname)}}">Unfollow</a>
+        {% endif %}
+    </p>
+</div>
+{% for post in posts.items %}
+    {% include 'post.html' %}
+{% endfor %}
+<ul class="pager">
+    {% if posts.has_prev %}
+    <li class="previous">
+        <a href="{{url_for('user', nickname=user.nickname, page=posts.prev_num)}}"><< Prev</a>
+    </li>
+    {% else %}
+    <li class="previous disabled"><a href="#"><< Prev</a></li>
+    {% endif %}
+    {% if posts.has_next %}
+    <li>
+        <a href="{{url_for('user', nickname=user.nickname, page=posts.next_num)}}">Next >></a>
+    </li>
+    {% else %}
+    <li class="next disabled"><a href="#">Next >></a></li>
+    {% endif %}
+</ul>
+{% endblock %}

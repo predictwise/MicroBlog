@@ -16,7 +16,7 @@
 然后在你的浏览器的地址栏中输入http://127.0.0.1:5000/, 即可访问到微博网站的登录页面.在登录页面中, 只需  
 从列表中选择你的OpenID(比如Google, Yahoo, Flickr等)即可进行访问, 或者在输入框中自行输入你的OpenID.  
 OpenID即为一个公共账号. 比如你有一个google账号, 也就是说你拥有了一个公共账号, 两者是通用的.  
-目前我只有Yahoo上有一个OpenID
+目前我只有Yahoo上有一个OpenID, 登录过程需要等待几秒钟.
 + 账号: chaoquan.zhang@yahoo.com
 + 密码: 12045zcq
 

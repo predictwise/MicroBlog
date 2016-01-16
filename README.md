@@ -1,3 +1,4 @@
+#### 作者：章超权，刘璐
 #### Hello guys, this is my first blog with Python2.7, Bootstrap, Flask and sqlite3
 #### 1. 克隆
 每次克隆之后, 在使用项目之前, 要先激活相应的环境
